@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import NewsItem from './NewsItem';
-// Impor ikon search dari react-icons
-import { FaSearch } from 'react-icons/fa';
 
 function SearchNews({ darkMode }) {
     const [query, setQuery] = useState('');
@@ -30,24 +28,20 @@ function SearchNews({ darkMode }) {
 
     return (
         <div className="mb-8">
-            <div className="flex mb-4 relative">
+            <div className="flex mb-4">
                 <input
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search news..."
-                    className={`flex-grow px-4 py-2 pr-12 border ${darkMode ? 'border-gray-700 bg-gray-800 text-white' : 'border-gray-300 bg-white text-black'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300`}
+                    className={`flex-grow px-4 py-2 border ${darkMode ? 'border-gray-700 bg-gray-800 text-white' : 'border-gray-300 bg-white text-black'} rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 />
                 <button 
                     onClick={fetchNews} 
-                    className={`absolute right-0 top-0 h-full px-4 ${darkMode ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-r-md transition-all duration-300 transform hover:scale-105`}
+                    className={`px-4 py-2 ${darkMode ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-r-md transition-colors`}
                     disabled={isLoading}
                 >
-                    {isLoading ? (
-                        <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
-                    ) : (
-                        <FaSearch className="text-xl" />
-                    )}
+                    {isLoading ? 'Searching...' : 'Search'}
                 </button>
             </div>
             {error && <p className="text-red-500 mb-4">{error}</p>}
