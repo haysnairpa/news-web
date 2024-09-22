@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NewsItem from './NewsItem';
 
+const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+
 function NewsByLocation({ country, language, darkMode }) {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const API_KEY = 'f8dd2b30bf734c90a0d67b2c5449d1ee';
-        const url = `https://newsapi.org/v2/top-headlines?country=${country}&language=${language}&apiKey=${API_KEY}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${country}&language=${language}&apiKey=${apiKey}`;
 
         axios.get(url)
             .then(response => {

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import NewsItem from './NewsItem';
 
+const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+
 function SearchNews({ darkMode }) {
     const [query, setQuery] = useState('');
     const [articles, setArticles] = useState([]);
